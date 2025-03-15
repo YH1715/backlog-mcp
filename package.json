@@ -1,0 +1,52 @@
+{
+  "name": "@yh1715/backlog-mcp",
+  "version": "1.0.0",
+  "description": "Backlog integration for Model Context Protocol",
+  "module": "dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "bin": {
+    "backlog-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc && bun build src/index.ts --minify --outdir dist --target node",
+    "prepublishOnly": "bun run build",
+    "test": "bun test"
+  },
+  "keywords": [
+    "backlog",
+    "mcp",
+    "model-context-protocol"
+  ],
+  "author": "YH1715",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "bun": "^1.2.5",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "prettier": "^3.5.3",
+    "zod": "^3.24.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YH1715/backlog-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YH1715/backlog-mcp/issues"
+  },
+  "homepage": "https://github.com/YH1715/backlog-mcp#readme"
+}

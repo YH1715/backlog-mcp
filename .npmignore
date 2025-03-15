@@ -1,0 +1,19 @@
+# ソースファイル
+src/
+tsconfig.json
+
+# 開発環境
+.git/
+.gitignore
+node_modules/
+bun.lock
+
+# 環境変数
+.env
+.env.example
+
+# その他
+.vscode/
+.cursor/
+.idea/
+*.log 
