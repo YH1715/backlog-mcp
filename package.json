@@ -2,12 +2,9 @@
   "name": "@yh1715/backlog-mcp",
   "version": "1.0.0",
   "description": "Backlog integration for Model Context Protocol",
-  "module": "dist/index.js",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "type": "module",
   "bin": {
-    "backlog-mcp": "./dist/index.js"
+    "backlog-mcp": "dist/index.js"
   },
   "files": [
     "dist",
@@ -16,7 +13,7 @@
   "scripts": {
     "dev": "bun run src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc && bun build src/index.ts --minify --outdir dist --target node",
+    "build": "tsc && bun build src/index.ts --minify --outdir dist --target node && shx chmod +x dist/*.js",
     "prepublishOnly": "bun run build",
     "test": "bun test"
   },
@@ -28,7 +25,8 @@
   "author": "YH1715",
   "license": "MIT",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "shx": "^0.3.4"
   },
   "peerDependencies": {
     "typescript": "^5"
