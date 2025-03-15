@@ -1,6 +1,6 @@
 {
   "name": "@yh1715/backlog-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Backlog integration for Model Context Protocol",
   "type": "module",
   "bin": {
