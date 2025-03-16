@@ -8,7 +8,7 @@ import { registerWikiTools } from "./backlog/tools/wikis";
 // Create server instance
 const server = new McpServer({
   name: "backlog",
-  version: "1.0.0",
+  version: "1.0.3",
 });
 
 const backlogClient = new BacklogClient();
