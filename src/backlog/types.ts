@@ -166,7 +166,7 @@ export interface IssueListParams {
   resolutionId?: number[];
   parentIssueId?: number[];
   sort?: string;
-  order?: 'asc' | 'desc';
+  order?: "asc" | "desc";
   offset?: number;
   count?: number;
   createdSince?: string;
@@ -187,10 +187,10 @@ export interface CommentListParams {
   minId?: number;
   maxId?: number;
   count?: number;
-  order?: 'asc' | 'desc';
+  order?: "asc" | "desc";
 }
 
 export interface WikiListParams {
   projectIdOrKey?: string | number;
   keyword?: string;
-} 
+}

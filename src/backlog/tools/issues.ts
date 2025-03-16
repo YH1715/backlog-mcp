@@ -3,7 +3,10 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { BacklogClient } from "../client";
 import { BACKLOG_PROJECT_ID } from "../../config";
 
-export function registerIssueTools(server: McpServer, backlogClient: BacklogClient) {
+export function registerIssueTools(
+  server: McpServer,
+  backlogClient: BacklogClient,
+) {
   // 課題一覧の取得
   server.tool(
     "backlog.issues.list",
@@ -23,9 +26,9 @@ export function registerIssueTools(server: McpServer, backlogClient: BacklogClie
         projectId: BACKLOG_PROJECT_ID,
       });
       return {
-        content: [{ type: "text", text: JSON.stringify(issues, null, 2) }]
+        content: [{ type: "text", text: JSON.stringify(issues, null, 2) }],
       };
-    }
+    },
   );
 
   // 課題詳細の取得
@@ -38,9 +41,9 @@ export function registerIssueTools(server: McpServer, backlogClient: BacklogClie
     async ({ issueIdOrKey }) => {
       const issue = await backlogClient.getIssue(issueIdOrKey);
       return {
-        content: [{ type: "text", text: JSON.stringify(issue, null, 2) }]
+        content: [{ type: "text", text: JSON.stringify(issue, null, 2) }],
       };
-    }
+    },
   );
 
   // 課題コメントの取得
@@ -53,14 +56,17 @@ export function registerIssueTools(server: McpServer, backlogClient: BacklogClie
       order: z.enum(["asc", "desc"]).optional().describe("ソート順"),
     },
     async (params) => {
-      const comments = await backlogClient.getIssueComments(params.issueIdOrKey, {
-        count: params.count,
-        order: params.order,
-      });
+      const comments = await backlogClient.getIssueComments(
+        params.issueIdOrKey,
+        {
+          count: params.count,
+          order: params.order,
+        },
+      );
       return {
-        content: [{ type: "text", text: JSON.stringify(comments, null, 2) }]
+        content: [{ type: "text", text: JSON.stringify(comments, null, 2) }],
       };
-    }
+    },
   );
 
   // 課題添付ファイルの取得
@@ -72,10 +78,13 @@ export function registerIssueTools(server: McpServer, backlogClient: BacklogClie
       attachmentId: z.string().describe("添付ファイルのID"),
     },
     async ({ issueIdOrKey, attachmentId }) => {
-      const attachment = await backlogClient.getIssueAttachment(issueIdOrKey, attachmentId);
+      const attachment = await backlogClient.getIssueAttachment(
+        issueIdOrKey,
+        attachmentId,
+      );
       return {
-        content: [{ type: "text", text: JSON.stringify(attachment, null, 2) }]
+        content: [{ type: "text", text: JSON.stringify(attachment, null, 2) }],
       };
-    }
+    },
   );
-} 
+}

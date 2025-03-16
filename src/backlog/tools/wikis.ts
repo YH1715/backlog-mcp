@@ -3,7 +3,10 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { BacklogClient } from "../client";
 import { BACKLOG_PROJECT_ID } from "../../config";
 
-export function registerWikiTools(server: McpServer, backlogClient: BacklogClient) {
+export function registerWikiTools(
+  server: McpServer,
+  backlogClient: BacklogClient,
+) {
   // Wikiページ一覧の取得
   server.tool(
     "backlog.wikis.list",
@@ -18,9 +21,9 @@ export function registerWikiTools(server: McpServer, backlogClient: BacklogClien
         projectIdOrKey: BACKLOG_PROJECT_ID,
       });
       return {
-        content: [{ type: "text", text: JSON.stringify(wikiPages, null, 2) }]
+        content: [{ type: "text", text: JSON.stringify(wikiPages, null, 2) }],
       };
-    }
+    },
   );
 
   // Wikiページ詳細の取得
@@ -33,9 +36,9 @@ export function registerWikiTools(server: McpServer, backlogClient: BacklogClien
     async ({ wikiId }) => {
       const wikiPage = await backlogClient.getWikiPage(wikiId);
       return {
-        content: [{ type: "text", text: JSON.stringify(wikiPage, null, 2) }]
+        content: [{ type: "text", text: JSON.stringify(wikiPage, null, 2) }],
       };
-    }
+    },
   );
 
   // Wiki添付ファイル一覧の取得
@@ -48,9 +51,9 @@ export function registerWikiTools(server: McpServer, backlogClient: BacklogClien
     async ({ wikiId }) => {
       const attachments = await backlogClient.getWikiAttachments(wikiId);
       return {
-        content: [{ type: "text", text: JSON.stringify(attachments, null, 2) }]
+        content: [{ type: "text", text: JSON.stringify(attachments, null, 2) }],
       };
-    }
+    },
   );
 
   // Wiki添付ファイルの取得
@@ -62,10 +65,13 @@ export function registerWikiTools(server: McpServer, backlogClient: BacklogClien
       attachmentId: z.number().describe("添付ファイルのID"),
     },
     async ({ wikiId, attachmentId }) => {
-      const attachment = await backlogClient.getWikiAttachment(wikiId, attachmentId);
+      const attachment = await backlogClient.getWikiAttachment(
+        wikiId,
+        attachmentId,
+      );
       return {
-        content: [{ type: "text", text: JSON.stringify(attachment, null, 2) }]
+        content: [{ type: "text", text: JSON.stringify(attachment, null, 2) }],
       };
-    }
+    },
   );
-} 
+}
